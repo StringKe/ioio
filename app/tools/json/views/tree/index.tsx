@@ -3,7 +3,7 @@ import { Button, Group, Menu, Stack, Text, Tooltip } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import IconCopy from '~icons/tabler/copy';
-import IconDots from '~icons/tabler/dots';
+import IconDownload from '~icons/tabler/download';
 import IconEdit from '~icons/tabler/edit';
 import IconEditOff from '~icons/tabler/edit-off';
 import IconKey from '~icons/tabler/key';
@@ -14,6 +14,7 @@ import type { JsonTreeNode } from '../../utils/json-tree';
 
 import { useTabs } from '../../atoms/tabs';
 import { JsonTree } from '../../utils/json-tree';
+import { getTransformAdapters } from '../../utils/sources';
 import styles from './styles.module.css';
 import { TreeRow } from './TreeRow';
 
@@ -90,6 +91,22 @@ export function TreeView({ className }: { className?: string }) {
     clipboard.copy(JSON.stringify(JSON.stringify(tree.data)));
   }, [clipboard, tree.data]);
 
+  const handleCopyAs = useCallback(
+    async (type: string) => {
+      try {
+        const adapters = await getTransformAdapters();
+        const adapter = adapters.find((a) => a.type === type)?.adapter;
+        if (!adapter) return;
+
+        const result = await adapter.deserialize(tree.data);
+        clipboard.copy(result);
+      } catch (error) {
+        console.error('Copy failed:', error);
+      }
+    },
+    [clipboard, tree.data],
+  );
+
   const handleUpdateKey = useCallback(
     (node: JsonTreeNode, newKey: string) => {
       const parentNode = tree.findParentNode(node);
@@ -107,6 +124,30 @@ export function TreeView({ className }: { className?: string }) {
       tree.updateNodeValue(node, newValue);
     },
     [tree],
+  );
+
+  const handleExport = useCallback(
+    async (type: string) => {
+      try {
+        const adapters = await getTransformAdapters();
+        const adapter = adapters.find((a) => a.type === type)?.adapter;
+        if (!adapter) return;
+
+        const result = await adapter.deserialize(tree.data);
+        const blob = new Blob([result], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `export.${type}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error('Export failed:', error);
+      }
+    },
+    [tree.data],
   );
 
   return (
@@ -140,12 +181,15 @@ export function TreeView({ className }: { className?: string }) {
           </Button>
           <Menu position='bottom-end' shadow='md'>
             <Menu.Target>
-              <Button size='xs' variant='subtle' rightSection={<IconDots />}>
+              <Button size='xs' variant='subtle' rightSection={<IconCopy />}>
                 <Trans>Copy</Trans>
               </Button>
             </Menu.Target>
 
             <Menu.Dropdown>
+              <Menu.Label>
+                <Trans>Basic</Trans>
+              </Menu.Label>
               <Menu.Item onClick={handleCopyAll}>
                 <Trans>Copy Formatted</Trans>
               </Menu.Item>
@@ -154,6 +198,66 @@ export function TreeView({ className }: { className?: string }) {
               </Menu.Item>
               <Menu.Item onClick={handleCopyEscaped}>
                 <Trans>Copy Escaped</Trans>
+              </Menu.Item>
+
+              <Menu.Divider />
+              <Menu.Label>
+                <Trans>Other Formats</Trans>
+              </Menu.Label>
+              <Menu.Item onClick={() => handleCopyAs('jsobj')}>
+                <Trans>Copy as JavaScript Object</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleCopyAs('yaml')}>
+                <Trans>Copy as YAML</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleCopyAs('toml')}>
+                <Trans>Copy as TOML</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleCopyAs('json5')}>
+                <Trans>Copy as JSON5</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleCopyAs('typescript')}>
+                <Trans>Copy as TypeScript</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleCopyAs('form')}>
+                <Trans>Copy as Form Data</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleCopyAs('query')}>
+                <Trans>Copy as Query String</Trans>
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+          <Menu position='bottom-end' shadow='md'>
+            <Menu.Target>
+              <Button size='xs' variant='subtle' rightSection={<IconDownload />}>
+                <Trans>Export</Trans>
+              </Button>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              <Menu.Item onClick={() => handleExport('json')}>
+                <Trans>Export as JSON</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('jsobj')}>
+                <Trans>Export as JavaScript Object</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('yaml')}>
+                <Trans>Export as YAML</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('toml')}>
+                <Trans>Export as TOML</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('json5')}>
+                <Trans>Export as JSON5</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('typescript')}>
+                <Trans>Export as TypeScript</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('form')}>
+                <Trans>Export as Form Data</Trans>
+              </Menu.Item>
+              <Menu.Item onClick={() => handleExport('query')}>
+                <Trans>Export as Query String</Trans>
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
