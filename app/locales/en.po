@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: app/tools/json/atoms/tabs.tsx:72
+#: app/tools/json/atoms/tabs.tsx:74
 msgid "Default Tab Name"
 msgstr "Default Tab Name"
 
@@ -22,6 +22,38 @@ msgstr "Default Tab Name"
 #: app/modules/lingui/lingui.tsx:16
 #~ msgid "English"
 #~ msgstr "English"
+
+#: app/tools/json/views/tree/index.tsx:132
+msgid "Clean"
+msgstr "Clean"
+
+#: app/tools/json/views/tree/index.tsx:157
+msgid "Collapse All"
+msgstr "Collapse All"
+
+#: app/tools/json/views/tree/index.tsx:137
+msgid "Copy"
+msgstr "Copy"
+
+#: app/tools/json/views/tree/index.tsx:149
+msgid "Copy Escaped"
+msgstr "Copy Escaped"
+
+#: app/tools/json/views/tree/index.tsx:143
+msgid "Copy Formatted"
+msgstr "Copy Formatted"
+
+#: app/tools/json/views/tree/index.tsx:118
+msgid "Copy Key"
+msgstr "Copy Key"
+
+#: app/tools/json/views/tree/index.tsx:146
+msgid "Copy Minified"
+msgstr "Copy Minified"
+
+#: app/tools/json/views/tree/index.tsx:123
+msgid "Copy Value"
+msgstr "Copy Value"
 
 #: app/tools/json/atoms/tabs.tsx:13
 msgid "Default Tab Name"
@@ -31,25 +63,32 @@ msgstr "Default Tab Name"
 msgid "English"
 msgstr "English"
 
+#: app/tools/json/views/tree/index.tsx:154
+msgid "Expand All"
+msgstr "Expand All"
+
 #: app/tools/json/views/tree/index.tsx:12
-msgid "Function Bar"
-msgstr "Function Bar"
+#~ msgid "Function Bar"
+#~ msgstr "Function Bar"
 
 #: app/routes/_index.tsx:15
 #~ msgid "Header"
 #~ msgstr "Header"
 
-#: app/tools/json/views/tree/index.tsx:15
+#: app/tools/json/components/DocumentSidebar/index.tsx:23
+msgid "JSON View"
+msgstr "JSON View"
+
 #: app/tools/json/views/table/index.tsx:10
-#: app/tools/json/views/json/index.tsx:10
+#: app/tools/json/views/diff/index.tsx:10
 msgid "Main Content"
 msgstr "Main Content"
 
-#: app/tools/json/utils/sources.ts:70
+#: app/tools/json/utils/sources.ts:85
 msgid "No adapter can detect the source"
 msgstr "No adapter can detect the source"
 
-#: app/tools/json/components/Empty/index.tsx:16
+#: app/tools/json/components/Empty/index.tsx:56
 msgid "Paste anything here, or hit enter after typing."
 msgstr "Paste anything here, or hit enter after typing."
 
@@ -61,6 +100,24 @@ msgstr "Paste anything here, or hit enter after typing."
 msgid "Simplified Chinese"
 msgstr "简体中文"
 
+#: app/root.tsx:46
+#: app/root.tsx:51
+#: app/root.tsx:58
+msgid "Site description"
+msgstr "a powerful online JSON viewer and editor tool"
+
+#: app/root.tsx:45
+#: app/root.tsx:50
+#: app/root.tsx:57
+#: app/root.tsx:62
+#: app/root.tsx:63
+msgid "Site title"
+msgstr "IoIo Tools - JSON Viewer & Editor"
+
+#: app/tools/json/components/DocumentSidebar/index.tsx:34
+msgid "Table View"
+msgstr "Table View"
+
 #: app/components/ColorSchemaToggleButton/index.tsx:42
 #: app/components/ColorSchemaToggleButton/index.tsx:48
 msgid "Toggle color scheme"
@@ -70,3 +127,7 @@ msgstr "Toggle color scheme"
 #: app/components/LanguageToggleButton.tsx:16
 msgid "Toggle Language"
 msgstr "Toggle Language"
+
+#: app/tools/json/components/DocumentSidebar/index.tsx:13
+msgid "Tree View"
+msgstr "Tree View"

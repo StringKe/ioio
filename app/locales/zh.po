@@ -14,9 +14,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: app/tools/json/atoms/tabs.tsx:72
+#: app/tools/json/atoms/tabs.tsx:74
 msgid "Default Tab Name"
 msgstr "默认文档"
+
+#: app/tools/json/views/tree/index.tsx:132
+msgid "Clean"
+msgstr "清空"
+
+#: app/tools/json/views/tree/index.tsx:157
+msgid "Collapse All"
+msgstr "折叠所有"
+
+#: app/tools/json/views/tree/index.tsx:137
+msgid "Copy"
+msgstr "复制"
+
+#: app/tools/json/views/tree/index.tsx:149
+msgid "Copy Escaped"
+msgstr "转义后复制"
+
+#: app/tools/json/views/tree/index.tsx:143
+msgid "Copy Formatted"
+msgstr "格式化后复制"
+
+#: app/tools/json/views/tree/index.tsx:118
+msgid "Copy Key"
+msgstr "复制键"
+
+#: app/tools/json/views/tree/index.tsx:146
+msgid "Copy Minified"
+msgstr "压缩后复制"
+
+#: app/tools/json/views/tree/index.tsx:123
+msgid "Copy Value"
+msgstr "复制值"
 
 #: app/tools/json/atoms/tabs.tsx:13
 msgid "Default Tab Name"
@@ -26,25 +58,32 @@ msgstr "默认文档"
 msgid "English"
 msgstr "English"
 
+#: app/tools/json/views/tree/index.tsx:154
+msgid "Expand All"
+msgstr "展开所有"
+
 #: app/tools/json/views/tree/index.tsx:12
-msgid "Function Bar"
-msgstr "功能栏"
+#~ msgid "Function Bar"
+#~ msgstr "功能栏"
 
 #: app/routes/_index.tsx:15
 #~ msgid "Header"
 #~ msgstr "头部"
 
-#: app/tools/json/views/tree/index.tsx:15
+#: app/tools/json/components/DocumentSidebar/index.tsx:23
+msgid "JSON View"
+msgstr "JSON 视图"
+
 #: app/tools/json/views/table/index.tsx:10
-#: app/tools/json/views/json/index.tsx:10
+#: app/tools/json/views/diff/index.tsx:10
 msgid "Main Content"
 msgstr "主内容"
 
-#: app/tools/json/utils/sources.ts:70
+#: app/tools/json/utils/sources.ts:85
 msgid "No adapter can detect the source"
 msgstr "没有适配器可以处理当前内容"
 
-#: app/tools/json/components/Empty/index.tsx:16
+#: app/tools/json/components/Empty/index.tsx:56
 msgid "Paste anything here, or hit enter after typing."
 msgstr "粘贴任何内容，或输入后按回车"
 
@@ -56,6 +95,24 @@ msgstr "粘贴任何内容，或输入后按回车"
 msgid "Simplified Chinese"
 msgstr "简体中文"
 
+#: app/root.tsx:46
+#: app/root.tsx:51
+#: app/root.tsx:58
+msgid "Site description"
+msgstr "一个强大的在线 JSON 查看器和编辑器工具"
+
+#: app/root.tsx:45
+#: app/root.tsx:50
+#: app/root.tsx:57
+#: app/root.tsx:62
+#: app/root.tsx:63
+msgid "Site title"
+msgstr "IoIo Tools - JSON 查看器和编辑器"
+
+#: app/tools/json/components/DocumentSidebar/index.tsx:34
+msgid "Table View"
+msgstr "表格视图"
+
 #: app/components/ColorSchemaToggleButton/index.tsx:42
 #: app/components/ColorSchemaToggleButton/index.tsx:48
 msgid "Toggle color scheme"
@@ -65,3 +122,7 @@ msgstr "切换颜色模式"
 #: app/components/LanguageToggleButton.tsx:16
 msgid "Toggle Language"
 msgstr "切换语言"
+
+#: app/tools/json/components/DocumentSidebar/index.tsx:13
+msgid "Tree View"
+msgstr "树状视图"
