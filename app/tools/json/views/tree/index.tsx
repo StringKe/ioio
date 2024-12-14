@@ -152,7 +152,7 @@ export function TreeView({ className }: { className?: string }) {
 
   return (
     <Stack gap={0} className={clsx(styles.root, className)}>
-      <Group className={styles.function} p={4} gap={4}>
+      <Group className={styles.function} p={4} gap={4} px={8}>
         {currentNode && (
           <Group gap={4}>
             <Text size='sm' className={styles.paths}>

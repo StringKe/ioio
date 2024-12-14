@@ -8,7 +8,23 @@
 }
 
 .treeRow:hover {
-  background-color: var(--mantine-color-gray-0);
+  @mixin light {
+    background-color: var(--mantine-color-gray-1);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-gray-8);
+  }
+}
+
+.selected {
+  @mixin light {
+    background-color: var(--mantine-color-gray-1);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-gray-8);
+  }
 }
 
 .expandIcon {
@@ -108,12 +124,4 @@
 
 .length:hover {
   text-decoration: underline;
-}
-
-.selected {
-  background-color: var(--mantine-color-blue-0);
-}
-
-.treeRow:hover:not(.selected) {
-  background-color: var(--mantine-color-gray-0);
 }
