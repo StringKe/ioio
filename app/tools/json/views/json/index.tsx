@@ -1,4 +1,4 @@
-import { Stack } from '@mantine/core';
+import { Stack, useComputedColorScheme } from '@mantine/core';
 import { Editor } from '@monaco-editor/react';
 import clsx from 'clsx';
 
@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 
 export function JSONView({ className }: { className?: string }) {
   const { currentTab, setCurrentTab } = useTabs();
+  const theme = useComputedColorScheme();
   return (
     <Stack gap={0} className={clsx(styles.root, className)}>
       <Editor
@@ -22,6 +23,7 @@ export function JSONView({ className }: { className?: string }) {
         options={{
           minimap: { enabled: false },
         }}
+        theme={theme === 'light' ? 'vs-light' : 'vs-dark'}
       />
     </Stack>
   );
