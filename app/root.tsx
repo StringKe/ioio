@@ -94,7 +94,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name='theme-color' content='#339af0' />
         <Meta />
         <Links />
-        <ColorSchemeScript nonce='8IBTHwOdqNKAWeKl7plt8g==' defaultColorScheme='dark' />\
+        <ColorSchemeScript nonce='8IBTHwOdqNKAWeKl7plt8g==' defaultColorScheme='dark' />
         <script
           dangerouslySetInnerHTML={{
             __html: `
