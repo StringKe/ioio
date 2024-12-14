@@ -9,7 +9,7 @@ type OverflowDirection = 'none' | 'grow' | 'shrink';
 
 export interface OverflowListProps<T> extends Omit<GroupProps, 'ref' | 'children'> {
   items: T[];
-  itemRenderer: (item: T, index: number) => React.ReactNode;
+  itemRenderer: (item: T, index: number, isLast: boolean) => React.ReactNode;
   overflowRenderer: (items: T[]) => React.ReactNode;
   minVisibleItems?: number;
   onOverflow?: (items: T[]) => void;
@@ -121,7 +121,9 @@ export function OverflowList<T>({
       }}
     >
       {collapseFrom === 'start' ? maybeOverflow : null}
-      {state.visible.map(itemRenderer)}
+      {state.visible.map((item, index, array) => {
+        return itemRenderer(item, index, array.length - 1 === index);
+      })}
       {collapseFrom === 'end' ? maybeOverflow : null}
       <div style={{ flexShrink: 1, width: 1 }} ref={spacer} />
     </Group>

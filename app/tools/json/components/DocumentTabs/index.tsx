@@ -9,10 +9,12 @@ export function DocumentTabs() {
   const { tabs } = useTabs();
   return (
     <OverflowList<Tab>
-      gap={0}
+      gap={4}
       className={styles.tabs}
       items={tabs}
-      itemRenderer={(item, index) => <TabItem key={index} tab={item} index={index} />}
+      itemRenderer={(item, index, isLast) => {
+        return <TabItem key={index} tab={item} index={index} isLast={isLast} />;
+      }}
       overflowRenderer={(items) => <div key={'items'}>{items.join(', ')}</div>}
     />
   );

@@ -42,18 +42,22 @@ const jsobjAdapter: IAdapter = {
 
   detect: async (source: string) => {
     try {
-      // 检查是否是有效的 JavaScript 对象字面量
       const trimmed = source.trim();
 
+      // 检查是否是变量声明
+      if (/^(const|let|var)\s+\w+\s*=/.test(trimmed)) {
+        return false; // 这种情况应该由 ts 适配器处理
+      }
+
       // 检查基本结构
-      if (!trimmed.startsWith('{') || !trimmed.endsWith('}')) {
+      if (!(/^\{.*\}$/.test(trimmed) || /^\[.*\]$/.test(trimmed))) {
         return false;
       }
 
-      // 检查是否包含 JavaScript 对象特有的模式
+      // 检查是否包含 JavaScript 对象特有的特征
       const hasJsObjectFeatures =
         // 无引号键名
-        /\b\w+\s*:/.test(trimmed) ||
+        /{\s*\w+\s*:/.test(trimmed) ||
         // 单引号字符串
         /'[^']*'/.test(trimmed) ||
         // 末尾逗号

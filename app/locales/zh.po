@@ -18,35 +18,35 @@ msgstr ""
 msgid "Default Tab Name"
 msgstr "默认文档"
 
-#: app/tools/json/views/tree/index.tsx:132
+#: app/tools/json/views/tree/index.tsx:139
 msgid "Clean"
 msgstr "清空"
 
-#: app/tools/json/views/tree/index.tsx:157
+#: app/tools/json/views/tree/index.tsx:164
 msgid "Collapse All"
 msgstr "折叠所有"
 
-#: app/tools/json/views/tree/index.tsx:137
+#: app/tools/json/views/tree/index.tsx:144
 msgid "Copy"
 msgstr "复制"
 
-#: app/tools/json/views/tree/index.tsx:149
+#: app/tools/json/views/tree/index.tsx:156
 msgid "Copy Escaped"
 msgstr "转义后复制"
 
-#: app/tools/json/views/tree/index.tsx:143
+#: app/tools/json/views/tree/index.tsx:150
 msgid "Copy Formatted"
 msgstr "格式化后复制"
 
-#: app/tools/json/views/tree/index.tsx:118
+#: app/tools/json/views/tree/index.tsx:120
 msgid "Copy Key"
 msgstr "复制键"
 
-#: app/tools/json/views/tree/index.tsx:146
+#: app/tools/json/views/tree/index.tsx:153
 msgid "Copy Minified"
 msgstr "压缩后复制"
 
-#: app/tools/json/views/tree/index.tsx:123
+#: app/tools/json/views/tree/index.tsx:125
 msgid "Copy Value"
 msgstr "复制值"
 
@@ -54,11 +54,19 @@ msgstr "复制值"
 msgid "Default Tab Name"
 msgstr "默认文档"
 
+#: app/tools/json/views/tree/index.tsx:133
+msgid "Disable Editing"
+msgstr "禁用编辑"
+
+#: app/tools/json/views/tree/index.tsx:133
+msgid "Enable Editing"
+msgstr "启用编辑"
+
 #: app/modules/lingui/lingui.tsx:18
 msgid "English"
 msgstr "English"
 
-#: app/tools/json/views/tree/index.tsx:154
+#: app/tools/json/views/tree/index.tsx:161
 msgid "Expand All"
 msgstr "展开所有"
 
@@ -79,7 +87,7 @@ msgstr "JSON 视图"
 msgid "Main Content"
 msgstr "主内容"
 
-#: app/tools/json/utils/sources.ts:85
+#: app/tools/json/utils/sources.ts:87
 msgid "No adapter can detect the source"
 msgstr "没有适配器可以处理当前内容"
 

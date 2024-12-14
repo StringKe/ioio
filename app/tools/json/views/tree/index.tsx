@@ -4,6 +4,8 @@ import { useClipboard } from '@mantine/hooks';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import IconCopy from '~icons/tabler/copy';
 import IconDots from '~icons/tabler/dots';
+import IconEdit from '~icons/tabler/edit';
+import IconEditOff from '~icons/tabler/edit-off';
 import IconKey from '~icons/tabler/key';
 import clsx from 'clsx';
 import { useCallback, useMemo, useRef, useState } from 'react';
@@ -128,6 +130,11 @@ export function TreeView({ className }: { className?: string }) {
           </Group>
         )}
         <Group ml='auto' gap={4}>
+          <Tooltip label={isReadOnly ? <Trans>Enable Editing</Trans> : <Trans>Disable Editing</Trans>}>
+            <Button size='xs' variant='subtle' onClick={() => setIsReadOnly(!isReadOnly)} className={styles.iconButton}>
+              {isReadOnly ? <IconEdit /> : <IconEditOff />}
+            </Button>
+          </Tooltip>
           <Button size='xs' variant='subtle' onClick={cleanCurrentTab}>
             <Trans>Clean</Trans>
           </Button>

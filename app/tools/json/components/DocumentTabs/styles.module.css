@@ -5,6 +5,19 @@
   user-select: none;
 }
 
+.tabRoot {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.addTab {
+  height: calc(100% - 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .tab {
   border: var(--app-border);
   border-bottom: none;
@@ -30,7 +43,6 @@
 .inputWrapper {
   flex: 1;
   height: 100%;
-  cursor: text;
 }
 
 .input {

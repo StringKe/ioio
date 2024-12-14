@@ -17,6 +17,19 @@ const jsonAdapter: IAdapter = {
   },
   detect: async (source: string) => {
     try {
+      const trimmed = source.trim();
+      if (!(/^\{.*\}$/.test(trimmed) || /^\[.*\]$/.test(trimmed))) {
+        return false;
+      }
+      if (/\/\/|\/\*/.test(trimmed)) {
+        return false;
+      }
+      if (/,\s*[}\]]/.test(trimmed)) {
+        return false;
+      }
+      if (/{\s*\w+\s*:/.test(trimmed)) {
+        return false;
+      }
       JSON.parse(source);
       return true;
     } catch (error) {

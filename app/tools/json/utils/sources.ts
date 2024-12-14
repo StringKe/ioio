@@ -21,11 +21,6 @@ export async function getTransformAdapters() {
       adapter: await transformAdapter('jsobj'),
     },
     {
-      type: 'yaml',
-      name: 'YAML',
-      adapter: await transformAdapter('yaml'),
-    },
-    {
       type: 'jsonc',
       name: 'JSON with Comments',
       adapter: await transformAdapter('jsonc'),
@@ -50,6 +45,11 @@ export async function getTransformAdapters() {
       name: 'Java Class',
       adapter: await transformAdapter('javaclass'),
     },
+    {
+      type: 'yaml',
+      name: 'YAML',
+      adapter: await transformAdapter('yaml'),
+    },
   ];
 }
 
@@ -60,9 +60,11 @@ export async function transformSource(source: string): Promise<{
   const adapters = await getTransformAdapters();
   for (const adapter of adapters) {
     const detect = await adapter.adapter.detect(source);
+    console.log(`${adapter.type} adapter detect:`, detect);
     if (detect) {
       try {
-        const json = JSON.parse(source);
+        const json = await adapter.adapter.serialize(source);
+        console.log(`${adapter.type} adapter serialize:`, json);
 
         // 基础类型需要包装成对象
         if (_.isObject(json) || _.isArray(json)) {
@@ -77,7 +79,7 @@ export async function transformSource(source: string): Promise<{
           };
         }
       } catch (error) {
-        console.error(error);
+        console.error(`${adapter.type} adapter error:`, error);
       }
     }
   }

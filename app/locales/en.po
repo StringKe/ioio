@@ -23,35 +23,35 @@ msgstr "Default Tab Name"
 #~ msgid "English"
 #~ msgstr "English"
 
-#: app/tools/json/views/tree/index.tsx:132
+#: app/tools/json/views/tree/index.tsx:139
 msgid "Clean"
 msgstr "Clean"
 
-#: app/tools/json/views/tree/index.tsx:157
+#: app/tools/json/views/tree/index.tsx:164
 msgid "Collapse All"
 msgstr "Collapse All"
 
-#: app/tools/json/views/tree/index.tsx:137
+#: app/tools/json/views/tree/index.tsx:144
 msgid "Copy"
 msgstr "Copy"
 
-#: app/tools/json/views/tree/index.tsx:149
+#: app/tools/json/views/tree/index.tsx:156
 msgid "Copy Escaped"
 msgstr "Copy Escaped"
 
-#: app/tools/json/views/tree/index.tsx:143
+#: app/tools/json/views/tree/index.tsx:150
 msgid "Copy Formatted"
 msgstr "Copy Formatted"
 
-#: app/tools/json/views/tree/index.tsx:118
+#: app/tools/json/views/tree/index.tsx:120
 msgid "Copy Key"
 msgstr "Copy Key"
 
-#: app/tools/json/views/tree/index.tsx:146
+#: app/tools/json/views/tree/index.tsx:153
 msgid "Copy Minified"
 msgstr "Copy Minified"
 
-#: app/tools/json/views/tree/index.tsx:123
+#: app/tools/json/views/tree/index.tsx:125
 msgid "Copy Value"
 msgstr "Copy Value"
 
@@ -59,11 +59,19 @@ msgstr "Copy Value"
 msgid "Default Tab Name"
 msgstr "Default Tab Name"
 
+#: app/tools/json/views/tree/index.tsx:133
+msgid "Disable Editing"
+msgstr "Disable Editing"
+
+#: app/tools/json/views/tree/index.tsx:133
+msgid "Enable Editing"
+msgstr "Enable Editing"
+
 #: app/modules/lingui/lingui.tsx:18
 msgid "English"
 msgstr "English"
 
-#: app/tools/json/views/tree/index.tsx:154
+#: app/tools/json/views/tree/index.tsx:161
 msgid "Expand All"
 msgstr "Expand All"
 
@@ -84,7 +92,7 @@ msgstr "JSON View"
 msgid "Main Content"
 msgstr "Main Content"
 
-#: app/tools/json/utils/sources.ts:85
+#: app/tools/json/utils/sources.ts:87
 msgid "No adapter can detect the source"
 msgstr "No adapter can detect the source"
 

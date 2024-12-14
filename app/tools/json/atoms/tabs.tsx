@@ -110,13 +110,37 @@ export function useTabs() {
   );
 
   const cleanCurrentTab = useCallback(() => {
-    setCurrentTab({
+    const emptyTab = {
       name: defaultTabName,
-      content: undefined,
+      content: {},
       source: '',
       detectSourceType: '',
+    };
+
+    setTabs((prev) => {
+      const newTabs = [...prev];
+      newTabs[activeTab] = emptyTab;
+      return newTabs;
     });
-  }, [setCurrentTab]);
+
+    setCurrentTab(emptyTab);
+  }, [setCurrentTab, setTabs, activeTab]);
+
+  const addEmptyTab = useCallback(() => {
+    setTabs((prev) => {
+      const newTabs = [...prev];
+      newTabs.push({
+        name: defaultTabName,
+        content: {},
+        source: '',
+        detectSourceType: '',
+      });
+      return newTabs;
+    });
+    setTimeout(() => {
+      setCurrentTab(tabs[tabs.length - 1]);
+    }, 10);
+  }, [setCurrentTab, setTabs, tabs]);
 
   return {
     activeTab,
@@ -129,5 +153,6 @@ export function useTabs() {
     removeTab,
     loadTab,
     cleanCurrentTab,
+    addEmptyTab,
   };
 }
