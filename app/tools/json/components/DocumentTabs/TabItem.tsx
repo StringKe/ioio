@@ -20,6 +20,10 @@ export function TabItem({ tab, index, isLast }: { tab: Tab; index: number; isLas
 
   const onChangeName = useCallback(
     (name: string) => {
+      if (name === '') {
+        return;
+      }
+
       setName(name);
       setTabs((prev) => {
         const newTabs = [...prev];

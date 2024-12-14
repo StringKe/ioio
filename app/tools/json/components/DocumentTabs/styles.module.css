@@ -31,13 +31,27 @@
   align-items: center;
   justify-content: space-between;
   min-width: rem(140px);
-  color: var(--mantine-color-gray-6);
   user-select: none;
+
+  @mixin light {
+    color: var(--mantine-color-gray-6);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-gray-4);
+  }
 }
 
 .active {
   font-weight: bold;
-  color: var(--mantine-color-gray-9);
+
+  @mixin light {
+    color: var(--mantine-color-gray-9);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-gray-2);
+  }
 }
 
 .inputWrapper {
