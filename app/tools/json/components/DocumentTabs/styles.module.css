@@ -1,0 +1,53 @@
+.tabs {
+  height: 100%;
+  flex: 1;
+  align-items: flex-end;
+  user-select: none;
+}
+
+.tab {
+  border: var(--app-border);
+  border-bottom: none;
+  border-radius: var(--mantine-radius-sm);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: calc(100% - 6px);
+  padding: rem(2px) rem(6px);
+  font-size: rem(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: rem(140px);
+  color: var(--mantine-color-gray-6);
+  user-select: none;
+}
+
+.active {
+  font-weight: bold;
+  color: var(--mantine-color-gray-9);
+}
+
+.inputWrapper {
+  flex: 1;
+  height: 100%;
+  cursor: text;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  pointer-events: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.editing {
+  user-select: text;
+  pointer-events: all;
+}

@@ -1,15 +1,29 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { lingui } from '@lingui/vite-plugin';
+import { vitePlugin as remix } from '@remix-run/dev';
+import { installGlobals } from '@remix-run/node';
+import Icons from 'unplugin-icons/vite';
+import { defineConfig } from 'vite';
+import macrosPlugin from 'vite-plugin-babel-macros';
+import dynamicImport from 'vite-plugin-dynamic-import';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-declare module "@remix-run/node" {
+declare module '@remix-run/node' {
   interface Future {
     v3_singleFetch: true;
   }
 }
 
+installGlobals();
+
 export default defineConfig({
   plugins: [
+    dynamicImport({}),
+    lingui(),
+    macrosPlugin(),
+    Icons({
+      compiler: 'jsx',
+      jsx: 'react',
+    }),
     remix({
       future: {
         v3_fetcherPersist: true,
@@ -18,7 +32,28 @@ export default defineConfig({
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
       },
+      manifest: true,
+      ignoredRouteFiles: ['**/*.module.css'],
     }),
     tsconfigPaths(),
   ],
+  ssr: {
+    noExternal: ['react-use'],
+  },
+  optimizeDeps: {
+    include: [
+      '@lingui/core',
+      '@lingui/react',
+      'react-use',
+
+      // transform adapter 都需要添加到此处
+      'js-yaml',
+      'jsonc-parser',
+      'java-parser',
+      'smol-toml',
+      'json5/lib/parse.js',
+      'json5/lib/stringify.js',
+      'typescript',
+    ],
+  },
 });

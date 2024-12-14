@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-12-14 11:28+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+#: app/tools/json/atoms/tabs.tsx:72
+msgid "Default Tab Name"
+msgstr "默认文档"
+
+#: app/tools/json/atoms/tabs.tsx:13
+msgid "Default Tab Name"
+msgstr "默认文档"
+
+#: app/modules/lingui/lingui.tsx:18
+msgid "English"
+msgstr "English"
+
+#: app/tools/json/views/tree/index.tsx:12
+msgid "Function Bar"
+msgstr "功能栏"
+
+#: app/routes/_index.tsx:15
+#~ msgid "Header"
+#~ msgstr "头部"
+
+#: app/tools/json/views/tree/index.tsx:15
+#: app/tools/json/views/table/index.tsx:10
+#: app/tools/json/views/json/index.tsx:10
+msgid "Main Content"
+msgstr "主内容"
+
+#: app/tools/json/utils/sources.ts:70
+msgid "No adapter can detect the source"
+msgstr "没有适配器可以处理当前内容"
+
+#: app/tools/json/components/Empty/index.tsx:16
+msgid "Paste anything here, or hit enter after typing."
+msgstr "粘贴任何内容，或输入后按回车"
+
+#: app/components/tools/json/JsonTool.tsx:21
+#~ msgid "Sidebar"
+#~ msgstr "侧边栏"
+
+#: app/modules/lingui/lingui.tsx:19
+msgid "Simplified Chinese"
+msgstr "简体中文"
+
+#: app/components/ColorSchemaToggleButton/index.tsx:42
+#: app/components/ColorSchemaToggleButton/index.tsx:48
+msgid "Toggle color scheme"
+msgstr "切换颜色模式"
+
+#: app/components/LanguageToggleButton.tsx:15
+#: app/components/LanguageToggleButton.tsx:16
+msgid "Toggle Language"
+msgstr "切换语言"

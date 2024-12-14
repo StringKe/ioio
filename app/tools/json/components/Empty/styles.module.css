@@ -1,0 +1,45 @@
+.root {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.5;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+}
+
+.logo {
+  width: rem(80px);
+  height: rem(80px);
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+.overlayText {
+  font-size: rem(24px);
+  font-weight: bold;
+  margin-top: rem(16px);
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  padding: rem(16px);
+  font-size: rem(16px);
+}
