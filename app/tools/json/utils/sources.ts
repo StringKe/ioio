@@ -50,6 +50,16 @@ export async function getTransformAdapters() {
       name: 'YAML',
       adapter: await transformAdapter('yaml'),
     },
+    {
+      type: 'form',
+      name: 'Form Data',
+      adapter: await transformAdapter('form'),
+    },
+    {
+      type: 'query',
+      name: 'Query String',
+      adapter: await transformAdapter('query'),
+    },
   ];
 }
 
