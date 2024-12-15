@@ -46,7 +46,13 @@ export function Empty({ className }: { className?: string }) {
 
   return (
     <div className={clsx(styles.root, className)}>
-      <textarea className={styles.textarea} onKeyDown={onKeyDown} onPaste={onPaste} />
+      <textarea
+        aria-label='Paste anything here, or hit enter after typing.'
+        className={styles.textarea}
+        onKeyDown={onKeyDown}
+        onPaste={onPaste}
+        autoFocus
+      />
       <div className={styles.overlay}>
         <div className={styles.logo}>
           <img src='/logo/icon-512.png' alt='logo' />

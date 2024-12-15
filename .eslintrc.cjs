@@ -85,6 +85,7 @@ module.exports = {
             varsIgnorePattern: '^_',
           },
         ],
+        'jsx-a11y/no-autofocus': ['off'],
       },
     },
 
