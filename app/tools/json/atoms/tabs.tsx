@@ -44,8 +44,10 @@ export function useTabs() {
     (tab: SetStateAction<Tab>) => {
       setTabs((prev) => {
         const index = prev.findIndex((t) => t.id === activeTab);
-        console.log(index, activeTab);
-        if (index === -1) return prev;
+        if (index === -1) {
+          const newTab = _.isFunction(tab) ? tab(defaultTab()) : tab;
+          return [...prev, newTab];
+        }
 
         const newTabs = [...prev];
         const newTab = _.isFunction(tab) ? tab(newTabs[index]) : tab;
