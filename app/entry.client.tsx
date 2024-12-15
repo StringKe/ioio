@@ -7,11 +7,32 @@
 import { i18n } from '@lingui/core';
 import { detect, fromHtmlTag } from '@lingui/detect-locale';
 import { I18nProvider } from '@lingui/react';
-import { RemixBrowser } from '@remix-run/react';
-import { startTransition, StrictMode } from 'react';
+import { RemixBrowser, useLocation, useMatches } from '@remix-run/react';
+import { browserTracingIntegration, init, replayIntegration } from '@sentry/remix';
+import { startTransition, StrictMode, useEffect } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 
 import { loadCatalog } from './modules/lingui/lingui';
+
+init({
+  dsn: 'https://4150d9fbbaa10aabb4b09a05b27f8a47@o4508471056924672.ingest.us.sentry.io/4508471057186816',
+  tracesSampleRate: 1,
+
+  integrations: [
+    browserTracingIntegration({
+      useEffect,
+      useLocation,
+      useMatches,
+    }),
+    replayIntegration({
+      maskAllText: true,
+      blockAllMedia: true,
+    }),
+  ],
+
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1,
+});
 
 async function main() {
   const locale = detect(fromHtmlTag('lang')) || 'en';

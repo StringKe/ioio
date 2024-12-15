@@ -4,7 +4,8 @@ import { i18n } from '@lingui/core';
 import { t } from '@lingui/core/macro';
 import { ColorSchemeScript } from '@mantine/core';
 import { json } from '@remix-run/node';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from '@remix-run/react';
+import { captureRemixErrorBoundaryError } from '@sentry/remix';
 import { useEffect } from 'react';
 
 import { RootProvider } from './components/RootProvider';
@@ -125,6 +126,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </html>
   );
 }
+
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+  captureRemixErrorBoundaryError(error);
+  return <div>Something went wrong</div>;
+};
 
 export default function App() {
   return (

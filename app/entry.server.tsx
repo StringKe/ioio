@@ -12,11 +12,17 @@ import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { createReadableStreamFromReadable } from '@remix-run/node';
 import { RemixServer } from '@remix-run/react';
+import * as Sentry from '@sentry/remix';
 import { isbot } from 'isbot';
 import { renderToPipeableStream } from 'react-dom/server';
 
 import { loadCatalog } from './modules/lingui/lingui';
 import { linguiServer } from './modules/lingui/lingui.server';
+
+export const handleError = Sentry.wrapHandleErrorWithSentry((error, { request }) => {
+  // Custom handleError implementation
+  console.error(error, request);
+});
 
 const ABORT_DELAY = 5_000;
 

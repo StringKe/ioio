@@ -1,6 +1,7 @@
 import { lingui } from '@lingui/vite-plugin';
 import { vitePlugin as remix } from '@remix-run/dev';
 import { installGlobals } from '@remix-run/node';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import macrosPlugin from 'vite-plugin-babel-macros';
@@ -21,6 +22,7 @@ export default defineConfig({
   define: {
     'process.env': {},
   },
+
   plugins: [
     wasm(),
     dynamicImport({}),
@@ -43,10 +45,16 @@ export default defineConfig({
       ignoredRouteFiles: ['**/*.module.css'],
     }),
     tsconfigPaths(),
+    sentryVitePlugin({
+      org: 'stringke',
+      project: 'ioio',
+    }),
   ],
+
   ssr: {
     noExternal: ['react-use'],
   },
+
   optimizeDeps: {
     include: [
       '@lingui/core',
@@ -73,5 +81,9 @@ export default defineConfig({
       // prettier worker
       'prettier',
     ],
+  },
+
+  build: {
+    sourcemap: true,
   },
 });
