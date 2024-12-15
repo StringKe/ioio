@@ -40,7 +40,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export type RootLoaderType = typeof loader;
 
-export const meta: MetaFunction = ({ data: { locale } }) => {
+export const meta: MetaFunction<typeof loader> = () => {
   return [
     { title: t`Site title` },
     { name: 'description', content: t`Site description` },

@@ -1,7 +1,10 @@
+import type { ActionIconProps, MantineColorScheme } from '@mantine/core';
+
 import { t } from '@lingui/core/macro';
-import { ActionIcon, ActionIconProps, MantineColorScheme, Tooltip, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, Tooltip, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
 import cx from 'clsx';
 import { useEffect, useMemo, useState } from 'react';
+
 import IconMoon from '~icons/tabler/moon';
 import IconSun from '~icons/tabler/sun';
 import IconSunMoon from '~icons/tabler/sun-moon';

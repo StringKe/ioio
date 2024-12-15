@@ -1,6 +1,6 @@
 import { dump, load } from 'js-yaml';
 
-import { type IAdapter } from './types';
+import { type IAdapter } from '../types';
 
 // YAML 格式的基本特征正则表达式
 const YAML_PATTERNS = [
@@ -19,7 +19,7 @@ const YAML_PATTERNS = [
 // 检查字符串是否可能是 YAML 格式
 function isPossibleYaml(source: string): boolean {
   // 如果包含大括号或方括号开头，可能是 JSON，跳过 YAML 检测
-  if (/^\s*[{\[]/.test(source)) {
+  if (/^\s*[{[]/.test(source)) {
     return false;
   }
 
@@ -46,7 +46,7 @@ function isPossibleYaml(source: string): boolean {
     }
 
     // 检查缩进是否是偶数个空格
-    const indentation = line.match(/^\s*/)[0].length;
+    const indentation = line.match(/^\s*/)![0].length;
     if (indentation > 0 && indentation % 2 !== 0) {
       return false;
     }

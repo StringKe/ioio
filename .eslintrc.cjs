@@ -43,8 +43,10 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        'import/no-unresolved': ['error', { ignore: ['^~icons/'] }],
+      },
     },
-
     // Typescript
     {
       files: ['**/*.{ts,tsx}'],

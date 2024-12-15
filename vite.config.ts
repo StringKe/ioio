@@ -5,6 +5,7 @@ import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import macrosPlugin from 'vite-plugin-babel-macros';
 import dynamicImport from 'vite-plugin-dynamic-import';
+import wasm from 'vite-plugin-wasm';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 declare module '@remix-run/node' {
@@ -16,7 +17,11 @@ declare module '@remix-run/node' {
 installGlobals();
 
 export default defineConfig({
+  define: {
+    'process.env': {},
+  },
   plugins: [
+    wasm(),
     dynamicImport({}),
     lingui(),
     macrosPlugin(),
@@ -54,6 +59,17 @@ export default defineConfig({
       'json5/lib/parse.js',
       'json5/lib/stringify.js',
       'typescript',
+      'generate-schema',
+      'json-ts',
+      'json-to-go',
+      'gofmt.js',
+      '@walmartlabs/json-to-simple-graphql-schema/lib',
+      'transform-json-types',
+      'json_typegen_wasm',
+      'json-to-zod',
+
+      // prettier worker
+      'prettier',
     ],
   },
 });

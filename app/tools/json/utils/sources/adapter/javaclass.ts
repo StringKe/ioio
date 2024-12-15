@@ -1,6 +1,6 @@
 import { BaseJavaCstVisitorWithDefaults, parse } from 'java-parser';
 
-import { type IAdapter } from './types';
+import { type IAdapter } from '../types';
 
 // 创建访问者来解析 Java 类结构
 class JavaClassVisitor extends BaseJavaCstVisitorWithDefaults {

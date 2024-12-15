@@ -13,11 +13,13 @@ export function JSONView({ className }: { className?: string }) {
       <Editor
         height='100%'
         defaultLanguage='json'
-        value={JSON.stringify(currentTab.content, null, 2)}
+        value={JSON.stringify(currentTab?.content ?? '{}', null, 2)}
         onChange={(value) => {
-          setCurrentTab({
-            ...currentTab,
-            content: JSON.parse(value || '{}'),
+          setCurrentTab((prev) => {
+            return {
+              ...prev,
+              content: JSON.parse(value || '{}'),
+            };
           });
         }}
         options={{

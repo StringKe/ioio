@@ -6,13 +6,13 @@ import { useTabs } from '../../atoms/tabs';
 import styles from './styles.module.css';
 
 export function Empty({ className }: { className?: string }) {
-  const { addTab } = useTabs();
+  const { reloadCurrentTabContent } = useTabs();
 
   const onContent = useCallback(
     (content: string) => {
-      addTab(content, true);
+      reloadCurrentTabContent(content);
     },
-    [addTab],
+    [reloadCurrentTabContent],
   );
 
   const onKeyDown = useCallback(

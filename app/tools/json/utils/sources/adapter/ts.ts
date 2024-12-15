@@ -1,6 +1,6 @@
 import * as ts from 'typescript';
 
-import { type IAdapter } from './types';
+import { type IAdapter } from '../types';
 
 const tsAdapter: IAdapter = {
   serialize: async (source: string) => {

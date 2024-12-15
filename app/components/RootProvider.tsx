@@ -9,7 +9,7 @@ import { I18nProvider } from '@lingui/react';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 export function RootProvider({ children }: PropsWithChildren) {
   return (

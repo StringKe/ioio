@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai';
 
-export declare type ViewType = 'tree' | 'table' | 'json' | 'diff';
+export declare type ViewType = 'tree' | 'json' | 'diff' | 'transformer';
 export const currentView = atom<ViewType>('tree');
 
 export function useView() {

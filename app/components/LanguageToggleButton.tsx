@@ -1,8 +1,12 @@
+import type { ActionIconProps } from '@mantine/core';
+
 import { t } from '@lingui/core/macro';
 import { Trans as TransComponent } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { ActionIcon, ActionIconProps, Menu, Tooltip } from '@mantine/core';
+import { ActionIcon, Menu, Tooltip } from '@mantine/core';
+
 import IconLanguage from '~icons/tabler/language';
+
 import { getLanguages, useLocaleSelector } from '../modules/lingui/lingui';
 
 export function LanguageToggleButton({ size = 'xs' }: { size?: ActionIconProps['size'] }) {

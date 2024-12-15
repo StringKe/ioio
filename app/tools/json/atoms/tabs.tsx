@@ -1,28 +1,31 @@
-import type { SetStateAction } from 'react';
+import type { SetStateAction } from 'jotai';
 
 import { type MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 import _ from 'lodash';
+import { nanoid } from 'nanoid';
 import { useCallback } from 'react';
 
-import { transformSource } from '../utils/sources';
+import { parserSource } from '../utils/sources';
 
 export const defaultTabName = msg`Default Tab Name`;
 
 export type JsonContent = { [key: string]: any } | any[];
 
 export interface Tab {
+  id: string;
   name: string | MessageDescriptor;
   content?: JsonContent;
   source: string;
   detectSourceType: string;
 }
-export const activeTabAtom = atomWithStorage<number>('json.activeTab', 0);
+export const activeTabAtom = atomWithStorage<string>('json.activeTab', 'default');
 export const tabsAtom = atomWithStorage<Tab[]>('json.tabs', [
   {
+    id: 'default',
     name: defaultTabName,
     content: {},
     source: '',
@@ -30,63 +33,78 @@ export const tabsAtom = atomWithStorage<Tab[]>('json.tabs', [
   },
 ]);
 
-export const currentTabAtom = atom(
-  (get) => {
-    const tabs = get(tabsAtom);
-    const activeTab = get(activeTabAtom);
-    return tabs[activeTab];
-  },
-  (get, set, value: SetStateAction<Tab>) => {
-    const tabs = get(tabsAtom);
-    const activeTab = get(activeTabAtom);
-    if (_.isFunction(value)) {
-      value = value(tabs[activeTab]);
-    }
-    tabs[activeTab] = value;
-    set(tabsAtom, tabs);
-  },
-);
+let id = 1;
 
 export function useTabs() {
   const { i18n } = useLingui();
   const [tabs, setTabs] = useAtom(tabsAtom);
   const [activeTab, setActiveTab] = useAtom(activeTabAtom);
-  const [currentTab, setCurrentTab] = useAtom(currentTabAtom);
+
+  const currentTab = tabs.find((tab) => tab.id === activeTab);
+  const setCurrentTab = useCallback(
+    (tab: SetStateAction<Tab>) => {
+      setTabs((prev) => {
+        const index = prev.findIndex((t) => t.id === activeTab);
+        if (index === -1) return prev;
+
+        const newTabs = [...prev];
+        const newTab = _.isFunction(tab) ? tab(newTabs[index]) : tab;
+        newTabs[index] = newTab;
+        return newTabs;
+      });
+    },
+    [setTabs, activeTab],
+  );
+
+  const reloadCurrentTabContent = useCallback(
+    async (content: string) => {
+      const sources = await parserSource(content);
+
+      setCurrentTab((prev) => {
+        return {
+          ...prev,
+          content: sources.content,
+          detectSourceType: sources.detectSourceType,
+          source: content,
+        };
+      });
+    },
+    [setCurrentTab],
+  );
 
   const addTab = useCallback(
-    async (source: string, replaceFirst: boolean = false) => {
-      const sources = await transformSource(source);
+    async (source: string) => {
+      const sources = await parserSource(source);
       const tab: Tab = {
+        id: nanoid(),
         name: sources.detectSourceType,
         content: sources.content,
         source: source,
         detectSourceType: sources.detectSourceType,
       };
+
       setTabs((prev) => {
         if (prev.length === 0) {
           tab.name = defaultTabName;
         }
-        if (replaceFirst) {
-          const lastTab = prev[prev.length - 1];
-          tab.name = lastTab.name;
-          return [tab, ...prev.slice(1)];
-        }
         tab.name = i18n.t('Default Tab Name') + ' ' + (prev.length + 1);
         return [...prev, tab];
       });
-      if (replaceFirst) {
-        setCurrentTab(tab);
-      }
+
+      setTimeout(() => {
+        setActiveTab(tab.id);
+      }, 10);
     },
-    [i18n, setTabs, setCurrentTab],
+    [i18n, setTabs, setActiveTab],
   );
 
   const removeTab = useCallback(
-    (index: number) => {
+    (tabId: string) => {
       setTabs((prev) => {
-        const newTabs = prev.filter((_, i) => i !== index);
+        const newTabs = prev.filter((tab) => tab.id !== tabId);
         if (newTabs.length === 0) {
           newTabs.push({
+            id: nanoid(),
             name: defaultTabName,
             content: undefined,
             source: '',
@@ -100,10 +118,10 @@ export function useTabs() {
   );
 
   const loadTab = useCallback(
-    (index: number) => {
-      const tab = tabs[index];
+    (tabId: string) => {
+      const tab = tabs.find((t) => t.id === tabId);
       if (tab) {
-        addTab(tab.source, true);
+        addTab(tab.source);
       }
     },
     [addTab, tabs],
@@ -111,6 +129,7 @@ export function useTabs() {
 
   const cleanCurrentTab = useCallback(() => {
     const emptyTab = {
+      id: nanoid(),
       name: defaultTabName,
       content: {},
       source: '',
@@ -118,29 +137,33 @@ export function useTabs() {
     };
 
     setTabs((prev) => {
+      const activeTabIndex = prev.findIndex((tab) => tab.id === activeTab);
+      if (activeTabIndex === -1) return prev;
+
       const newTabs = [...prev];
-      newTabs[activeTab] = emptyTab;
+      newTabs[activeTabIndex] = emptyTab;
       return newTabs;
     });
 
-    setCurrentTab(emptyTab);
-  }, [setCurrentTab, setTabs, activeTab]);
+    setActiveTab(emptyTab.id);
+  }, [setActiveTab, setTabs, activeTab]);
 
   const addEmptyTab = useCallback(() => {
+    const tab = {
+      id: nanoid(),
+      name: i18n._(defaultTabName) + ' ' + id++,
+      content: {},
+      source: '',
+      detectSourceType: '',
+    };
     setTabs((prev) => {
-      const newTabs = [...prev];
-      newTabs.push({
-        name: defaultTabName,
-        content: {},
-        source: '',
-        detectSourceType: '',
-      });
-      return newTabs;
+      return [...prev, tab];
     });
+
     setTimeout(() => {
-      setCurrentTab(tabs[tabs.length - 1]);
+      setActiveTab(tab.id);
     }, 10);
-  }, [setCurrentTab, setTabs, tabs]);
+  }, [setActiveTab, setTabs, i18n]);
 
   return {
     activeTab,
@@ -154,5 +177,6 @@ export function useTabs() {
     loadTab,
     cleanCurrentTab,
     addEmptyTab,
+    reloadCurrentTabContent,
   };
 }

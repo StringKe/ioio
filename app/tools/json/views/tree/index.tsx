@@ -2,19 +2,20 @@ import { Trans } from '@lingui/react/macro';
 import { Button, Group, Menu, Stack, Text, Tooltip } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import clsx from 'clsx';
+import { useCallback, useMemo, useRef, useState } from 'react';
+
 import IconCopy from '~icons/tabler/copy';
 import IconDownload from '~icons/tabler/download';
 import IconEdit from '~icons/tabler/edit';
 import IconEditOff from '~icons/tabler/edit-off';
 import IconKey from '~icons/tabler/key';
-import clsx from 'clsx';
-import { useCallback, useMemo, useRef, useState } from 'react';
 
 import type { JsonTreeNode } from '../../utils/json-tree';
 
 import { useTabs } from '../../atoms/tabs';
 import { JsonTree } from '../../utils/json-tree';
-import { getTransformAdapters } from '../../utils/sources';
+import { getSourceAdapters } from '../../utils/sources';
 import styles from './styles.module.css';
 import { TreeRow } from './TreeRow';
 
@@ -29,10 +30,10 @@ export function TreeView({ className }: { className?: string }) {
 
   const tree = useMemo(
     () =>
-      new JsonTree(currentTab.content, {
+      new JsonTree(currentTab?.content ?? {}, {
         setNodes,
       }),
-    [currentTab.content],
+    [currentTab?.content],
   );
 
   const virtualizer = useVirtualizer({
@@ -94,7 +95,7 @@ export function TreeView({ className }: { className?: string }) {
   const handleCopyAs = useCallback(
     async (type: string) => {
       try {
-        const adapters = await getTransformAdapters();
+        const adapters = await getSourceAdapters();
         const adapter = adapters.find((a) => a.type === type)?.adapter;
         if (!adapter) return;
 
@@ -129,7 +130,7 @@ export function TreeView({ className }: { className?: string }) {
   const handleExport = useCallback(
     async (type: string) => {
       try {
-        const adapters = await getTransformAdapters();
+        const adapters = await getSourceAdapters();
         const adapter = adapters.find((a) => a.type === type)?.adapter;
         if (!adapter) return;
 

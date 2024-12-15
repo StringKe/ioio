@@ -1,8 +1,10 @@
 import { t } from '@lingui/core/macro';
 import { ActionIcon, Stack, Tooltip } from '@mantine/core';
+
+import IconDiff from '~icons/tabler/file-diff';
 import IconJson from '~icons/tabler/json';
 import IconTree from '~icons/tabler/list-tree';
-import IconTable from '~icons/tabler/table';
+import IconTransform from '~icons/tabler/transform';
 
 import { useView } from '../../atoms/view';
 
@@ -31,14 +33,25 @@ export function DocumentSidebar({ className, ...props }: { className?: string })
         </ActionIcon>
       </Tooltip>
 
-      <Tooltip label={t`Table View`}>
+      <Tooltip label={t`Transformer View`}>
         <ActionIcon
-          variant={view === 'table' ? 'light' : 'subtle'}
-          color={view === 'table' ? 'blue' : 'gray'}
+          variant={view === 'transformer' ? 'light' : 'subtle'}
+          color={view === 'transformer' ? 'blue' : 'gray'}
           size='lg'
-          onClick={() => setView('table')}
+          onClick={() => setView('transformer')}
         >
-          <IconTable />
+          <IconTransform />
+        </ActionIcon>
+      </Tooltip>
+
+      <Tooltip label={t`Diff View`}>
+        <ActionIcon
+          variant={view === 'diff' ? 'light' : 'subtle'}
+          color={view === 'diff' ? 'blue' : 'gray'}
+          size='lg'
+          onClick={() => setView('diff')}
+        >
+          <IconDiff />
         </ActionIcon>
       </Tooltip>
     </Stack>

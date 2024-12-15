@@ -1,73 +1,73 @@
 import { t } from '@lingui/core/macro';
 import _ from 'lodash';
 
-import { type IAdapter } from './adapter/types';
+import { type IAdapter } from './types';
 
-export async function transformAdapter(type: string) {
+export async function getSourceAdapter(type: string) {
   const handle = (await import(`./adapter/${type}`)) as { default: IAdapter };
   return handle.default;
 }
 
-export async function getTransformAdapters() {
+export async function getSourceAdapters() {
   return [
-    {
-      type: 'json',
-      name: 'JSON',
-      adapter: await transformAdapter('json'),
-    },
     {
       type: 'jsobj',
       name: 'JavaScript Object',
-      adapter: await transformAdapter('jsobj'),
+      adapter: await getSourceAdapter('jsobj'),
     },
     {
       type: 'jsonc',
       name: 'JSON with Comments',
-      adapter: await transformAdapter('jsonc'),
+      adapter: await getSourceAdapter('jsonc'),
     },
     {
       type: 'toml',
       name: 'TOML',
-      adapter: await transformAdapter('toml'),
+      adapter: await getSourceAdapter('toml'),
     },
     {
       type: 'json5',
       name: 'JSON5',
-      adapter: await transformAdapter('json5'),
+      adapter: await getSourceAdapter('json5'),
     },
     {
       type: 'typescript',
       name: 'TypeScript',
-      adapter: await transformAdapter('ts'),
+      adapter: await getSourceAdapter('ts'),
     },
     {
       type: 'javaclass',
       name: 'Java Class',
-      adapter: await transformAdapter('javaclass'),
+      adapter: await getSourceAdapter('javaclass'),
     },
     {
       type: 'yaml',
       name: 'YAML',
-      adapter: await transformAdapter('yaml'),
+      adapter: await getSourceAdapter('yaml'),
     },
     {
       type: 'form',
       name: 'Form Data',
-      adapter: await transformAdapter('form'),
+      adapter: await getSourceAdapter('form'),
     },
     {
       type: 'query',
       name: 'Query String',
-      adapter: await transformAdapter('query'),
+      adapter: await getSourceAdapter('query'),
+    },
+    {
+      type: 'json',
+      name: 'JSON',
+      adapter: await getSourceAdapter('json'),
     },
   ];
 }
 
-export async function transformSource(source: string): Promise<{
+export async function parserSource(source: string): Promise<{
   content: any;
   detectSourceType: string;
 }> {
-  const adapters = await getTransformAdapters();
+  const adapters = await getSourceAdapters();
   for (const adapter of adapters) {
     const detect = await adapter.adapter.detect(source);
     console.log(`${adapter.type} adapter detect:`, detect);

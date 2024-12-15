@@ -6,7 +6,7 @@ import { useView } from '../atoms/view';
 import { Empty } from '../components/Empty';
 import { DiffView } from './diff';
 import { JSONView } from './json';
-import { TableView } from './table';
+import { TransformerView } from './transformer';
 import { TreeView } from './tree';
 
 export function ViewDispatch({ className }: { className?: string }) {
@@ -14,7 +14,7 @@ export function ViewDispatch({ className }: { className?: string }) {
   const { currentTab } = useTabs();
 
   const hasContent = useMemo(() => {
-    return !(_.isNil(currentTab.content) || _.isEmpty(currentTab.content));
+    return !(_.isNil(currentTab?.content) || _.isEmpty(currentTab?.content));
   }, [currentTab]);
 
   if (!hasContent) {
@@ -25,12 +25,12 @@ export function ViewDispatch({ className }: { className?: string }) {
     return <TreeView className={className} />;
   }
 
-  if (view === 'table') {
-    return <TableView className={className} />;
-  }
-
   if (view === 'diff') {
     return <DiffView className={className} />;
+  }
+
+  if (view === 'transformer') {
+    return <TransformerView className={className} />;
   }
 
   return <JSONView className={className} />;

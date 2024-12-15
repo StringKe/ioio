@@ -1,6 +1,6 @@
 import { parse, stringify } from 'smol-toml';
 
-import { type IAdapter } from './types';
+import { type IAdapter } from '../types';
 
 const tomlAdapter: IAdapter = {
   serialize: async (source: string) => {

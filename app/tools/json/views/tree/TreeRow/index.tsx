@@ -1,8 +1,9 @@
 import { TextInput } from '@mantine/core';
-import IconChevronDown from '~icons/tabler/chevron-down';
-import IconChevronRight from '~icons/tabler/chevron-right';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+
+import IconChevronDown from '~icons/tabler/chevron-down';
+import IconChevronRight from '~icons/tabler/chevron-right';
 
 import { type JsonTreeNode } from '../../../utils/json-tree';
 import styles from './styles.module.css';

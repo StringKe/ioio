@@ -1,6 +1,6 @@
 import { parse } from 'jsonc-parser';
 
-import { type IAdapter } from './types';
+import { type IAdapter } from '../types';
 
 const jsoncAdapter: IAdapter = {
   serialize: async (source: string) => {

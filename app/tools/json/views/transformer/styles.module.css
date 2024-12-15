@@ -1,0 +1,24 @@
+.root {
+  height: var(--app-main-height);
+  --panel-header-height: 38px;
+}
+
+.panelHeader {
+  padding: 4px;
+  height: var(--panel-header-height);
+  border-bottom: var(--app-border);
+}
+
+.panelHeaderTitle {
+  font-weight: 500;
+  font-size: rem(14px);
+}
+
+.panelLeft {
+  border-right: var(--app-border);
+}
+
+.panelContent {
+  height: calc(var(--app-main-height) - var(--panel-header-height));
+  position: relative;
+}

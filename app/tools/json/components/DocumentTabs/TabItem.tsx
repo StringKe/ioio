@@ -1,9 +1,10 @@
 import { useLingui } from '@lingui/react';
 import { ActionIcon } from '@mantine/core';
-import IconPlus from '~icons/tabler/plus';
-import IconX from '~icons/tabler/x';
 import clsx from 'clsx';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
+import IconPlus from '~icons/tabler/plus';
+import IconX from '~icons/tabler/x';
 
 import type { Tab } from '../../atoms/tabs';
 
@@ -44,11 +45,11 @@ export function TabItem({ tab, index, isLast }: { tab: Tab; index: number; isLas
 
   return (
     <div className={styles.tabRoot}>
-      <div className={clsx(styles.tab, { [styles.active]: activeTab === index })}>
+      <div className={clsx(styles.tab, { [styles.active]: activeTab === tab.id })}>
         <div
           className={styles.inputWrapper}
           onClick={() => {
-            setActiveTab(index);
+            setActiveTab(tab.id);
           }}
           onDoubleClick={() => {
             setEditing(true);
@@ -74,7 +75,7 @@ export function TabItem({ tab, index, isLast }: { tab: Tab; index: number; isLas
             }}
           />
         </div>
-        <ActionIcon size='xs' variant='subtle' aria-label='Close current tab' color='gray' onClick={() => removeTab(index)}>
+        <ActionIcon size='xs' variant='subtle' aria-label='Close current tab' color='gray' onClick={() => removeTab(tab.id)}>
           <IconX />
         </ActionIcon>
       </div>

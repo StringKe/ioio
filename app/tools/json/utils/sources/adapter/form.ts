@@ -1,4 +1,4 @@
-import { type IAdapter } from './types';
+import { type IAdapter } from '../types';
 
 const formAdapter: IAdapter = {
   serialize: async (source: string) => {
