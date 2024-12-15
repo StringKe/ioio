@@ -93,6 +93,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel='icon' type='image/svg+xml' href='/logo/icon-512.png' />
         <link rel='apple-touch-icon' href='/logo/apple-touch-icon.png' />
         <meta name='theme-color' content='#339af0' />
+        <meta name='baidu-site-verification' content='codeva-wIb3QQE1uK' />
         <Meta />
         <Links />
         <ColorSchemeScript nonce='8IBTHwOdqNKAWeKl7plt8g==' defaultColorScheme='dark' />
