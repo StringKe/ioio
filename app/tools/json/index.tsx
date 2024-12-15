@@ -1,13 +1,32 @@
 import { Box, Group, Stack } from '@mantine/core';
+import { useState } from 'react';
+import { useMount } from 'react-use';
 
 import { ColorSchemaToggleButton } from '../../components/ColorSchemaToggleButton';
 import { LanguageToggleButton } from '../../components/LanguageToggleButton';
+import { defaultTab, useTabs } from './atoms/tabs';
 import { DocumentSidebar } from './components/DocumentSidebar';
 import { DocumentTabs } from './components/DocumentTabs';
 import styles from './styles.module.css';
 import { ViewDispatch } from './views/ViewDispatch';
 
 export function JsonTool() {
+  const { tabs, setActiveTab, setTabs } = useTabs();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useMount(() => {
+    if (tabs.length === 0) {
+      const tab = defaultTab();
+      setTabs([tab]);
+      setActiveTab(tab.id);
+    }
+    setIsMounted(true);
+  });
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <Stack gap={0} className={styles.root}>
       <Group gap={0} className={styles.header}>

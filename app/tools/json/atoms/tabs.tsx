@@ -22,18 +22,17 @@ export interface Tab {
   source: string;
   detectSourceType: string;
 }
-export const activeTabAtom = atomWithStorage<string>('json.activeTab', 'default');
-export const tabsAtom = atomWithStorage<Tab[]>('json.tabs', [
-  {
-    id: 'default',
-    name: defaultTabName,
-    content: {},
-    source: '',
-    detectSourceType: '',
-  },
-]);
+export const activeTabAtom = atomWithStorage<string>('json.activeTab', 'default', undefined, { getOnInit: true });
+export const tabsAtom = atomWithStorage<Tab[]>('json.tabs', [], undefined, { getOnInit: true });
+export const defaultTab = () => ({
+  id: nanoid(),
+  name: 'Tab ' + id++,
+  content: {},
+  source: '',
+  detectSourceType: '',
+});
 
-let id = 1;
+let id = 0;
 
 export function useTabs() {
   const { i18n } = useLingui();
@@ -45,6 +44,7 @@ export function useTabs() {
     (tab: SetStateAction<Tab>) => {
       setTabs((prev) => {
         const index = prev.findIndex((t) => t.id === activeTab);
+        console.log(index, activeTab);
         if (index === -1) return prev;
 
         const newTabs = [...prev];
@@ -103,13 +103,7 @@ export function useTabs() {
       setTabs((prev) => {
         const newTabs = prev.filter((tab) => tab.id !== tabId);
         if (newTabs.length === 0) {
-          newTabs.push({
-            id: nanoid(),
-            name: defaultTabName,
-            content: undefined,
-            source: '',
-            detectSourceType: '',
-          });
+          newTabs.push(defaultTab());
         }
         return newTabs;
       });
@@ -128,13 +122,7 @@ export function useTabs() {
   );
 
   const cleanCurrentTab = useCallback(() => {
-    const emptyTab = {
-      id: nanoid(),
-      name: defaultTabName,
-      content: {},
-      source: '',
-      detectSourceType: '',
-    };
+    const emptyTab = defaultTab();
 
     setTabs((prev) => {
       const activeTabIndex = prev.findIndex((tab) => tab.id === activeTab);
@@ -149,13 +137,7 @@ export function useTabs() {
   }, [setActiveTab, setTabs, activeTab]);
 
   const addEmptyTab = useCallback(() => {
-    const tab = {
-      id: nanoid(),
-      name: i18n._(defaultTabName) + ' ' + id++,
-      content: {},
-      source: '',
-      detectSourceType: '',
-    };
+    const tab = defaultTab();
     setTabs((prev) => {
       return [...prev, tab];
     });
@@ -163,7 +145,7 @@ export function useTabs() {
     setTimeout(() => {
       setActiveTab(tab.id);
     }, 10);
-  }, [setActiveTab, setTabs, i18n]);
+  }, [setActiveTab, setTabs]);
 
   return {
     activeTab,
