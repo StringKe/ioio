@@ -23,67 +23,67 @@ msgstr "Default Tab Name"
 #~ msgid "English"
 #~ msgstr "English"
 
-#: app/tools/json/views/tree/index.tsx:192
+#: app/tools/json/views/tree/index.tsx:165
 msgid "Basic"
 msgstr "Basic"
 
-#: app/tools/json/views/tree/index.tsx:181
+#: app/tools/json/views/tree/index.tsx:154
 msgid "Clean"
 msgstr "Clean"
 
-#: app/tools/json/views/tree/index.tsx:269
+#: app/tools/json/views/tree/index.tsx:242
 msgid "Collapse All"
 msgstr "Collapse All"
 
-#: app/tools/json/views/tree/index.tsx:186
+#: app/tools/json/views/tree/index.tsx:159
 msgid "Copy"
 msgstr "Copy"
 
-#: app/tools/json/views/tree/index.tsx:224
+#: app/tools/json/views/tree/index.tsx:197
 msgid "Copy as Form Data"
 msgstr "Copy as Form Data"
 
-#: app/tools/json/views/tree/index.tsx:209
+#: app/tools/json/views/tree/index.tsx:182
 msgid "Copy as JavaScript Object"
 msgstr "Copy as JavaScript Object"
 
-#: app/tools/json/views/tree/index.tsx:218
+#: app/tools/json/views/tree/index.tsx:191
 msgid "Copy as JSON5"
 msgstr "Copy as JSON5"
 
-#: app/tools/json/views/tree/index.tsx:227
+#: app/tools/json/views/tree/index.tsx:200
 msgid "Copy as Query String"
 msgstr "Copy as Query String"
 
-#: app/tools/json/views/tree/index.tsx:215
+#: app/tools/json/views/tree/index.tsx:188
 msgid "Copy as TOML"
 msgstr "Copy as TOML"
 
-#: app/tools/json/views/tree/index.tsx:221
+#: app/tools/json/views/tree/index.tsx:194
 msgid "Copy as TypeScript"
 msgstr "Copy as TypeScript"
 
-#: app/tools/json/views/tree/index.tsx:212
+#: app/tools/json/views/tree/index.tsx:185
 msgid "Copy as YAML"
 msgstr "Copy as YAML"
 
-#: app/tools/json/views/tree/index.tsx:201
+#: app/tools/json/views/tree/index.tsx:174
 msgid "Copy Escaped"
 msgstr "Copy Escaped"
 
-#: app/tools/json/views/tree/index.tsx:195
+#: app/tools/json/views/tree/index.tsx:168
 msgid "Copy Formatted"
 msgstr "Copy Formatted"
 
-#: app/tools/json/views/tree/index.tsx:162
+#: app/tools/json/views/tree/index.tsx:140
 msgid "Copy Key"
 msgstr "Copy Key"
 
-#: app/tools/json/views/tree/index.tsx:198
+#: app/tools/json/views/tree/index.tsx:171
 msgid "Copy Minified"
 msgstr "Copy Minified"
 
-#: app/tools/json/views/tree/index.tsx:167
+#: app/tools/json/views/tree/index.tsx:145
 msgid "Copy Value"
 msgstr "Copy Value"
 
@@ -95,55 +95,47 @@ msgstr "Default Tab Name"
 msgid "Diff View"
 msgstr "Diff View"
 
-#: app/tools/json/views/tree/index.tsx:175
-msgid "Disable Editing"
-msgstr "Disable Editing"
-
-#: app/tools/json/views/tree/index.tsx:175
-msgid "Enable Editing"
-msgstr "Enable Editing"
-
 #: app/modules/lingui/lingui.tsx:18
 msgid "English"
 msgstr "English"
 
-#: app/tools/json/views/tree/index.tsx:266
+#: app/tools/json/views/tree/index.tsx:239
 msgid "Expand All"
 msgstr "Expand All"
 
-#: app/tools/json/views/tree/index.tsx:234
+#: app/tools/json/views/tree/index.tsx:207
 msgid "Export"
 msgstr "Export"
 
-#: app/tools/json/views/tree/index.tsx:258
+#: app/tools/json/views/tree/index.tsx:231
 msgid "Export as Form Data"
 msgstr "Export as Form Data"
 
-#: app/tools/json/views/tree/index.tsx:243
+#: app/tools/json/views/tree/index.tsx:216
 msgid "Export as JavaScript Object"
 msgstr "Export as JavaScript Object"
 
-#: app/tools/json/views/tree/index.tsx:240
+#: app/tools/json/views/tree/index.tsx:213
 msgid "Export as JSON"
 msgstr "Export as JSON"
 
-#: app/tools/json/views/tree/index.tsx:252
+#: app/tools/json/views/tree/index.tsx:225
 msgid "Export as JSON5"
 msgstr "Export as JSON5"
 
-#: app/tools/json/views/tree/index.tsx:261
+#: app/tools/json/views/tree/index.tsx:234
 msgid "Export as Query String"
 msgstr "Export as Query String"
 
-#: app/tools/json/views/tree/index.tsx:249
+#: app/tools/json/views/tree/index.tsx:222
 msgid "Export as TOML"
 msgstr "Export as TOML"
 
-#: app/tools/json/views/tree/index.tsx:255
+#: app/tools/json/views/tree/index.tsx:228
 msgid "Export as TypeScript"
 msgstr "Export as TypeScript"
 
-#: app/tools/json/views/tree/index.tsx:246
+#: app/tools/json/views/tree/index.tsx:219
 msgid "Export as YAML"
 msgstr "Export as YAML"
 
@@ -168,7 +160,7 @@ msgstr "JSON View"
 msgid "No adapter can detect the source"
 msgstr "No adapter can detect the source"
 
-#: app/tools/json/views/tree/index.tsx:206
+#: app/tools/json/views/tree/index.tsx:179
 msgid "Other Formats"
 msgstr "Other Formats"
 

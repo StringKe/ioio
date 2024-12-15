@@ -18,67 +18,67 @@ msgstr ""
 msgid "Default Tab Name"
 msgstr "默认文档"
 
-#: app/tools/json/views/tree/index.tsx:192
+#: app/tools/json/views/tree/index.tsx:165
 msgid "Basic"
 msgstr "基础"
 
-#: app/tools/json/views/tree/index.tsx:181
+#: app/tools/json/views/tree/index.tsx:154
 msgid "Clean"
 msgstr "清空"
 
-#: app/tools/json/views/tree/index.tsx:269
+#: app/tools/json/views/tree/index.tsx:242
 msgid "Collapse All"
 msgstr "折叠所有"
 
-#: app/tools/json/views/tree/index.tsx:186
+#: app/tools/json/views/tree/index.tsx:159
 msgid "Copy"
 msgstr "复制"
 
-#: app/tools/json/views/tree/index.tsx:224
+#: app/tools/json/views/tree/index.tsx:197
 msgid "Copy as Form Data"
 msgstr "复制为表单数据"
 
-#: app/tools/json/views/tree/index.tsx:209
+#: app/tools/json/views/tree/index.tsx:182
 msgid "Copy as JavaScript Object"
 msgstr "复制为 JavaScript 对象"
 
-#: app/tools/json/views/tree/index.tsx:218
+#: app/tools/json/views/tree/index.tsx:191
 msgid "Copy as JSON5"
 msgstr "复制为 JSON5"
 
-#: app/tools/json/views/tree/index.tsx:227
+#: app/tools/json/views/tree/index.tsx:200
 msgid "Copy as Query String"
 msgstr "复制为查询字符串"
 
-#: app/tools/json/views/tree/index.tsx:215
+#: app/tools/json/views/tree/index.tsx:188
 msgid "Copy as TOML"
 msgstr "复制为 TOML"
 
-#: app/tools/json/views/tree/index.tsx:221
+#: app/tools/json/views/tree/index.tsx:194
 msgid "Copy as TypeScript"
 msgstr "复制为 TypeScript"
 
-#: app/tools/json/views/tree/index.tsx:212
+#: app/tools/json/views/tree/index.tsx:185
 msgid "Copy as YAML"
 msgstr "复制为 YAML"
 
-#: app/tools/json/views/tree/index.tsx:201
+#: app/tools/json/views/tree/index.tsx:174
 msgid "Copy Escaped"
 msgstr "转义后复制"
 
-#: app/tools/json/views/tree/index.tsx:195
+#: app/tools/json/views/tree/index.tsx:168
 msgid "Copy Formatted"
 msgstr "格式化后复制"
 
-#: app/tools/json/views/tree/index.tsx:162
+#: app/tools/json/views/tree/index.tsx:140
 msgid "Copy Key"
 msgstr "复制键"
 
-#: app/tools/json/views/tree/index.tsx:198
+#: app/tools/json/views/tree/index.tsx:171
 msgid "Copy Minified"
 msgstr "压缩后复制"
 
-#: app/tools/json/views/tree/index.tsx:167
+#: app/tools/json/views/tree/index.tsx:145
 msgid "Copy Value"
 msgstr "复制值"
 
@@ -91,54 +91,54 @@ msgid "Diff View"
 msgstr "对比视图"
 
 #: app/tools/json/views/tree/index.tsx:175
-msgid "Disable Editing"
-msgstr "禁用编辑"
+#~ msgid "Disable Editing"
+#~ msgstr "禁用编辑"
 
 #: app/tools/json/views/tree/index.tsx:175
-msgid "Enable Editing"
-msgstr "启用编辑"
+#~ msgid "Enable Editing"
+#~ msgstr "启用编辑"
 
 #: app/modules/lingui/lingui.tsx:18
 msgid "English"
 msgstr "English"
 
-#: app/tools/json/views/tree/index.tsx:266
+#: app/tools/json/views/tree/index.tsx:239
 msgid "Expand All"
 msgstr "展开所有"
 
-#: app/tools/json/views/tree/index.tsx:234
+#: app/tools/json/views/tree/index.tsx:207
 msgid "Export"
 msgstr "导出"
 
-#: app/tools/json/views/tree/index.tsx:258
+#: app/tools/json/views/tree/index.tsx:231
 msgid "Export as Form Data"
 msgstr "导出为表单数据"
 
-#: app/tools/json/views/tree/index.tsx:243
+#: app/tools/json/views/tree/index.tsx:216
 msgid "Export as JavaScript Object"
 msgstr "导出为 JavaScript 对象"
 
-#: app/tools/json/views/tree/index.tsx:240
+#: app/tools/json/views/tree/index.tsx:213
 msgid "Export as JSON"
 msgstr "导出为 JSON"
 
-#: app/tools/json/views/tree/index.tsx:252
+#: app/tools/json/views/tree/index.tsx:225
 msgid "Export as JSON5"
 msgstr "导出为 JSON5"
 
-#: app/tools/json/views/tree/index.tsx:261
+#: app/tools/json/views/tree/index.tsx:234
 msgid "Export as Query String"
 msgstr "导出为查询字符串"
 
-#: app/tools/json/views/tree/index.tsx:249
+#: app/tools/json/views/tree/index.tsx:222
 msgid "Export as TOML"
 msgstr "导出为 TOML"
 
-#: app/tools/json/views/tree/index.tsx:255
+#: app/tools/json/views/tree/index.tsx:228
 msgid "Export as TypeScript"
 msgstr "导出为 TypeScript"
 
-#: app/tools/json/views/tree/index.tsx:246
+#: app/tools/json/views/tree/index.tsx:219
 msgid "Export as YAML"
 msgstr "导出为 YAML"
 
@@ -163,7 +163,7 @@ msgstr "JSON 视图"
 msgid "No adapter can detect the source"
 msgstr "没有适配器可以处理当前内容"
 
-#: app/tools/json/views/tree/index.tsx:206
+#: app/tools/json/views/tree/index.tsx:179
 msgid "Other Formats"
 msgstr "其他格式"
 

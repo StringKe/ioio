@@ -7,8 +7,6 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 import IconCopy from '~icons/tabler/copy';
 import IconDownload from '~icons/tabler/download';
-import IconEdit from '~icons/tabler/edit';
-import IconEditOff from '~icons/tabler/edit-off';
 import IconKey from '~icons/tabler/key';
 
 import type { JsonTreeNode } from '../../utils/json-tree';
@@ -26,7 +24,6 @@ export function TreeView({ className }: { className?: string }) {
 
   const [nodes, setNodes] = useState<JsonTreeNode[]>([]);
   const [currentNode, setCurrentNode] = useState<JsonTreeNode | null>(null);
-  const [isReadOnly, setIsReadOnly] = useState(false);
 
   const tree = useMemo(
     () =>
@@ -108,25 +105,6 @@ export function TreeView({ className }: { className?: string }) {
     [clipboard, tree.data],
   );
 
-  const handleUpdateKey = useCallback(
-    (node: JsonTreeNode, newKey: string) => {
-      const parentNode = tree.findParentNode(node);
-      if (!parentNode) return;
-
-      const oldValue = tree.getValueByPath(tree.data, node.paths);
-      tree.removeNode(node);
-      tree.addNode(parentNode, oldValue, newKey);
-    },
-    [tree],
-  );
-
-  const handleUpdateValue = useCallback(
-    (node: JsonTreeNode, newValue: any) => {
-      tree.updateNodeValue(node, newValue);
-    },
-    [tree],
-  );
-
   const handleExport = useCallback(
     async (type: string) => {
       try {
@@ -172,11 +150,6 @@ export function TreeView({ className }: { className?: string }) {
           </Group>
         )}
         <Group ml='auto' gap={4}>
-          <Tooltip label={isReadOnly ? <Trans>Enable Editing</Trans> : <Trans>Disable Editing</Trans>}>
-            <Button size='xs' variant='subtle' onClick={() => setIsReadOnly(!isReadOnly)} className={styles.iconButton}>
-              {isReadOnly ? <IconEdit /> : <IconEditOff />}
-            </Button>
-          </Tooltip>
           <Button size='xs' variant='subtle' onClick={cleanCurrentTab}>
             <Trans>Clean</Trans>
           </Button>
@@ -297,9 +270,6 @@ export function TreeView({ className }: { className?: string }) {
                 onToggleExpand={handleToggleExpand}
                 isSelected={currentNode === nodes[virtualRow.index]}
                 onSelect={handleSelect}
-                isReadOnly={isReadOnly}
-                onUpdateKey={handleUpdateKey}
-                onUpdateValue={handleUpdateValue}
               />
             </div>
           ))}
