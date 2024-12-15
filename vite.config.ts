@@ -5,6 +5,7 @@ import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import macrosPlugin from 'vite-plugin-babel-macros';
 import dynamicImport from 'vite-plugin-dynamic-import';
+import topLevelAwait from 'vite-plugin-top-level-await';
 import wasm from 'vite-plugin-wasm';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
@@ -23,6 +24,7 @@ export default defineConfig({
   plugins: [
     wasm(),
     dynamicImport({}),
+    topLevelAwait(),
     lingui(),
     macrosPlugin(),
     Icons({

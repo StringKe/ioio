@@ -38,7 +38,7 @@
     "generate-schema": "^2.6.0",
     "gofmt.js": "^0.0.2",
     "intl-parse-accept-language": "^1.0.0",
-    "isbot": "^4.1.0",
+    "isbot": "^5.1.17",
     "java-parser": "^2.3.2",
     "jotai": "^2.10.3",
     "jotai-optics": "^0.4.0",
@@ -56,8 +56,7 @@
     "react-dom": "^18.2.0",
     "react-use": "^17.6.0",
     "smol-toml": "^1.3.1",
-    "transform-json-types": "^0.7.0",
-    "vite-plugin-wasm": "^3.3.0"
+    "transform-json-types": "^0.7.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
@@ -96,7 +95,9 @@
     "vite": "^5.1.0",
     "vite-plugin-babel-macros": "^1.0.6",
     "vite-plugin-dynamic-import": "^1.6.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-plugin-top-level-await": "^1.4.4",
+    "vite-plugin-wasm": "^3.3.0",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
     "node": ">=20.0.0"
