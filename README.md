@@ -1,40 +1,57 @@
-# Welcome to Remix!
+# IoIo Tools - JSON Viewer & Editor
 
-- 📖 [Remix docs](https://remix.run/docs)
+[中文版](README-zh.md)
+
+A powerful online JSON viewer and editor tool that helps you format, validate, and transform JSON data.
+
+## Features
+
+- 🚀 Multiple Views
+
+  - Tree View: Hierarchical display of JSON data
+  - JSON View: Raw JSON with syntax highlighting
+  - Diff View: Compare JSON differences
+  - Transform View: Convert between different formats
+
+- 📑 Multi-tab Support
+
+  - Multiple documents management
+  - Customizable tab names
+  - Persistent tabs across sessions
+
+- 🔄 Format Conversion
+
+  - JSON
+  - YAML
+  - TOML
+  - JSON5
+  - TypeScript
+  - Form Data
+  - Query String
+
+- 🌐 Internationalization
+
+  - English
+  - Simplified Chinese
+  - More languages coming soon
+
+- 🎨 Theme Support
+  - Light mode
+  - Dark mode
+  - Auto mode (follows system preference)
 
 ## Development
 
-Run the dev server:
+```bash
+# Install dependencies
+pnpm install
 
-```shellscript
-npm run dev
+# Run dev server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Run production server
+pnpm start
 ```
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
