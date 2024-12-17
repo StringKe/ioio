@@ -1,6 +1,8 @@
-import { Box, Group, Stack } from '@mantine/core';
+import { Box, Button, Group, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { useMount } from 'react-use';
+
+import IconBrandGithub from '~icons/tabler/brand-github';
 
 import { ColorSchemaToggleButton } from '../../components/ColorSchemaToggleButton';
 import { LanguageToggleButton } from '../../components/LanguageToggleButton';
@@ -29,11 +31,23 @@ export function JsonTool() {
 
   return (
     <Stack gap={0} className={styles.root}>
-      <Group gap={0} className={styles.header}>
+      <Group gap={0} className={styles.header} pr='xs'>
         <div className={styles.logo}>
           <img src='/logo/icon-192.png' alt='logo' />
         </div>
         <DocumentTabs />
+        <Group gap={0} h='100%'>
+          <Button
+            size='xs'
+            variant='light'
+            component='a'
+            href='https://github.com/StringKe/ioio'
+            target='_blank'
+            leftSection={<IconBrandGithub />}
+          >
+            Star on GitHub
+          </Button>
+        </Group>
       </Group>
       <Box className={styles.content}>
         <DocumentSidebar className={styles.sidebar} />
