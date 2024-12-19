@@ -34,8 +34,31 @@ const formAdapter: IAdapter = {
   detect: async (source: string) => {
     try {
       const trimmed = source.trim();
-      // 检查是否符合 key=value 格式
-      return /^(?:[^=&]+=(?:[^=&]*&)*[^=&]*)?$/.test(trimmed);
+      if (!trimmed) return false;
+
+      // 排除可能是 Base64 的情况
+      if (/^[A-Za-z0-9+/]+=*$/.test(trimmed)) {
+        return false;
+      }
+
+      // 检查基本格式是否符合 key=value 模式
+      if (!/^(?:[^=&]+=(?:[^=&]*&)*[^=&]*)?$/.test(trimmed)) {
+        return false;
+      }
+
+      // 确保至少有一个有效的 key=value 对
+      const pairs = trimmed.split('&').filter(Boolean);
+      if (pairs.length === 0) return false;
+
+      // 验证每个键值对的格式
+      return pairs.every((pair) => {
+        // 检查是否包含等号
+        if (!pair.includes('=')) return false;
+
+        const [key] = pair.split('=');
+        // 确保 key 不为空且是有效的表单字段名（只允许常见的字符）
+        return key.length > 0 && /^[\w\-\.]+$/.test(key);
+      });
     } catch (error) {
       return false;
     }

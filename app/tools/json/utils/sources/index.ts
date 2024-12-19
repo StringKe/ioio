@@ -11,26 +11,6 @@ export async function getSourceAdapter(type: string) {
 export async function getSourceAdapters() {
   return [
     {
-      type: 'jsobj',
-      name: 'JavaScript Object',
-      adapter: await getSourceAdapter('jsobj'),
-    },
-    {
-      type: 'jsonc',
-      name: 'JSON with Comments',
-      adapter: await getSourceAdapter('jsonc'),
-    },
-    {
-      type: 'toml',
-      name: 'TOML',
-      adapter: await getSourceAdapter('toml'),
-    },
-    {
-      type: 'json5',
-      name: 'JSON5',
-      adapter: await getSourceAdapter('json5'),
-    },
-    {
       type: 'typescript',
       name: 'TypeScript',
       adapter: await getSourceAdapter('ts'),
@@ -41,9 +21,34 @@ export async function getSourceAdapters() {
       adapter: await getSourceAdapter('javaclass'),
     },
     {
+      type: 'toml',
+      name: 'TOML',
+      adapter: await getSourceAdapter('toml'),
+    },
+    {
       type: 'yaml',
       name: 'YAML',
       adapter: await getSourceAdapter('yaml'),
+    },
+    {
+      type: 'jsonc',
+      name: 'JSON with Comments',
+      adapter: await getSourceAdapter('jsonc'),
+    },
+    {
+      type: 'json5',
+      name: 'JSON5',
+      adapter: await getSourceAdapter('json5'),
+    },
+    {
+      type: 'jsobj',
+      name: 'JavaScript Object',
+      adapter: await getSourceAdapter('jsobj'),
+    },
+    {
+      type: 'json',
+      name: 'JSON',
+      adapter: await getSourceAdapter('json'),
     },
     {
       type: 'form',
@@ -54,11 +59,6 @@ export async function getSourceAdapters() {
       type: 'query',
       name: 'Query String',
       adapter: await getSourceAdapter('query'),
-    },
-    {
-      type: 'json',
-      name: 'JSON',
-      adapter: await getSourceAdapter('json'),
     },
   ];
 }

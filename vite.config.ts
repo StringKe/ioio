@@ -77,6 +77,7 @@ export default defineConfig({
       'transform-json-types',
       'json_typegen_wasm',
       'json-to-zod',
+      'query-string',
 
       // prettier worker
       'prettier',
